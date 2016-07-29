@@ -45,4 +45,19 @@ class InvalidParameterExceptionTest extends TestCase
         $this->api
             ->start('something');
     }
+
+    public function testItemsWithAnArrayOfMoreThanFiftyKeysThrowsAnException()
+    {
+        $this->expectException(InvalidParameterException::class);
+
+        $keys = [];
+
+        for ($i = 0; $i < 51; $i++) {
+            $keys[] = (string) $i;
+        }
+
+        $this->api
+            ->group(12345)
+            ->items($keys);
+    }
 }

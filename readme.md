@@ -96,6 +96,14 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
+To access multiple items in a library, given their keys, call the `items($keys)` method, with `$keys` an array of item keys.
+
+```php
+$api->user($userId)
+    ->items(['ABCD', 'EFGH', 'IJKL'])
+    // continue chaining methods...
+```
+
 #### Single item
 
 To access a specific item in a library, call `items($itemKey)` method with the item key as a parameter.
@@ -180,6 +188,15 @@ To access all items in a collection, call `items()` method after calling a speci
 $api->user($userId)
     ->collections($collectionKey)
     ->items()
+    // continue chaining methods...
+```
+
+To access multiple items in a collection, given their keys, call the `items($keys)` method, with `$keys` an array of item keys after calling a specific collection.
+
+```php
+$api->user($userId)
+    ->collections($collectionKey)
+    ->items(['ABCD', 'EFGH', 'IJKL'])
     // continue chaining methods...
 ```
 

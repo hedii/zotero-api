@@ -147,6 +147,19 @@ class ZoteroApiTest extends TestCase
         );
     }
 
+    public function testItemsWithArrayOfKeys()
+    {
+        $result = $this->api
+            ->group($this->groupId)
+            ->items(['ABCD', 'EFGH', 'IJKL']);
+
+        $this->assertInstanceOf(ZoteroApi::class, $result);
+        $this->assertEquals(
+            'groups/' . $this->groupId . '/items?itemKey=ABCD,EFGH,IJKL',
+            $this->api->getPath()
+        );
+    }
+
     public function testItemsAfterCollections()
     {
         $result = $this->api

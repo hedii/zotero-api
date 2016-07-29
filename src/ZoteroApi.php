@@ -345,22 +345,35 @@ class ZoteroApi
      * Build the path to get either the set of all items in the library, or a
      * specific item in the library if a key is passed as a parameter.
      *
-     * @param string|null $key
+     * @param string|array|null $keys
      * @return $this
      * @throws \Hedii\ZoteroApi\Exceptions\BadMethodCallException
      */
-    public function items($key = null)
+    public function items($keys = null)
     {
-        $this->setPath(
-            $key ? $this->path . '/items/' . $key : $this->path . '/items'
-        );
-
         if (
             ! $this->contains($this->path, 'users/') &&
             ! $this->contains($this->path, 'groups/')
         ) {
             throw new BadMethodCallException(
                 'Method items() has to be called after method user($userId), method group($groupId) or method collections($key)'
+            );
+        }
+
+        if (is_array($keys)) {
+            if (count($keys) > 50) {
+                throw new InvalidParameterException(
+                    'Method items($keys) accept an array of up to 50 item keys max, ' . count($keys) . ' keys given'
+                );
+            }
+
+            $this->setPath($this->path . '/items');
+            $this->addQueryString($this->path, [
+                'itemKey' => implode(',', $keys)
+            ]);
+        } else {
+            $this->setPath(
+                $keys ? $this->path . '/items/' . $keys : $this->path . '/items'
             );
         }
 
