@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         stopOnFailure="true">
+    <testsuites>
+        <testsuite name="ZoteroApi Test Suite">
+            <directory suffix="Test.php">./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="ZOTERO_API_KEY" value="xxxxxxxxxxxxxxxxxxxxxxxx"/>
+        <env name="ZOTERO_USER_ID" value="0000000"/>
+        <env name="ZOTERO_GROUP_ID" value="111111"/>
+    </php>
+</phpunit>

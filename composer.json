@@ -1,0 +1,45 @@
+{
+    "name": "hedii/zotero-api",
+    "description": "A php wrapper for zotero web api.",
+    "keywords": [
+        "hedii",
+        "zotero-api",
+        "zotero",
+        "php"
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=5.5.9",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
+    "homepage": "https://github.com/hedii/zotero-api",
+    "support": {
+        "issues": "https://github.com/hedii/zotero-api/issues",
+        "source": "https://github.com/hedii/zotero-api",
+        "email": "hedi.chaibs@gmail.com"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hedii",
+            "email": "hedi.chaibs@gmail.com",
+            "homepage": "https://hedichaibi.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hedii\\ZoteroApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hedii\\ZoteroApi\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
