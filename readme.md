@@ -11,27 +11,26 @@ A php wrapper for zotero web api.
 - [Usage](#usage)
   - [Instantiation](#instantiation)
   - [User and group libraries](#user-and-group-libraries)
-  - [Resources](#resources)
-    - [Items](#items)
-      - [Multiple items](#multiple-items)
-      - [Single item](#single-item)
-      - [Top level items](#top-level-items)
-      - [Items in the trash](#items-in-the-trash)
-      - [Child items](#child-items)
-      - [Item tags](#item-tags)
-    - [Collections](#collections)
-      - [Multiple collections](#multiple-collections)
-      - [Single collection](#single-collection)
-      - [Items in a collection](#items-in-a-collection)
-      - [Top level items in a collection](#top-level-items-in-a-collection)
-      - [Collection tags](#collection-tags)
-      - [Sub collections](#sub-collections)
-    - [Tags](#tags)
-    - [Searches](#searches)
-      - [Multiple searches](#multiple-searches)
-      - [Single search](#single-search)
-    - [Key](#key)
-    - [Groups](#groups)
+  - [Items](#items)
+    - [Multiple items](#multiple-items)
+    - [Single item](#single-item)
+    - [Top level items](#top-level-items)
+    - [Items in the trash](#items-in-the-trash)
+    - [Child items](#child-items)
+    - [Item tags](#item-tags)
+  - [Collections](#collections)
+    - [Multiple collections](#multiple-collections)
+    - [Single collection](#single-collection)
+    - [Items in a collection](#items-in-a-collection)
+    - [Top level items in a collection](#top-level-items-in-a-collection)
+    - [Collection tags](#collection-tags)
+    - [Sub collections](#sub-collections)
+  - [Tags](#tags)
+  - [Searches](#searches)
+    - [Multiple searches](#multiple-searches)
+    - [Single search](#single-search)
+  - [Key](#key)
+  - [Groups](#groups)
   - [Sorting and pagination](#sorting-and-pagination)
     - [Sorting](#sort)
     - [Direction](#direction)
@@ -85,11 +84,9 @@ $api->group($groupId)
     // continue chaining methods...
 ```
 
-### Resources
+### Items
 
-#### Items
-
-##### Multiple items
+#### Multiple items
 
 To access all items in a library, call the `items()` method.
 
@@ -99,7 +96,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Single item
+#### Single item
 
 To access a specific item in a library, call `items($itemKey)` method with the item key as a parameter.
 
@@ -109,7 +106,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Top level items
+#### Top level items
 
 To access only top level items in a library, call `top()` method just after the `items()` method.
 
@@ -120,7 +117,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Items in the trash
+#### Items in the trash
 
 To access items that have been put in the trash, call `trash()` method just after `items()` method.
 
@@ -131,7 +128,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Child items
+#### Child items
 
 To access an item's child items, call `children()` method just after `items($itemKey)` method.
 
@@ -142,7 +139,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Item tags
+#### Item tags
 
 To access all tags associated with a specific item, call `tags()` method just after `items($itemKey)` method.
 
@@ -153,9 +150,9 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-#### Collections
+### Collections
 
-##### Multiple collections
+#### Multiple collections
 
 To access all collections in a library, call the `collections()` method.
 
@@ -165,7 +162,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Single collection
+#### Single collection
 
 To access a specific collection in a library, call `collections($collectionKey)` method with the collection key as a parameter.
 
@@ -175,7 +172,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Items in a collection
+#### Items in a collection
 
 To access all items in a collection, call `items()` method after calling a specific collection.
 
@@ -186,7 +183,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Top level items in a collection
+#### Top level items in a collection
 
 To access only top items in a collection, call `top()` method after calling items in a specific collection.
 
@@ -198,7 +195,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Collection tags
+#### Collection tags
 
 To access all tags associated with a specific collection, call `tags()` method just after `collections($collectionKey)` method.
 
@@ -209,7 +206,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Sub collections
+#### Sub collections
 
 To access sub collections within a specific collection, call `subCollection()` method just after `collections($collectionKey)` method.
 
@@ -220,9 +217,9 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-#### Tags
+### Tags
 
-##### All tags
+#### All tags
 
 To access all tags in a library, call `tags()` method.
 
@@ -232,7 +229,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Matching tags
+#### Matching tags
 
 To access tags matching a specific name in a library, call `tags($tagName)` method with `$tagName` a string as a parameter.
 
@@ -242,9 +239,9 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-#### Searches
+### Searches
 
-##### Multiple searches
+#### Multiple searches
 
 To access all saved searches in a library, call `searches()` method.
 
@@ -254,7 +251,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-##### Single search
+#### Single search
 
 To access a specific saved search in a library, call `searches($searchKey)` method with the search key as a parameter.
 
@@ -264,7 +261,7 @@ $api->user($userId)
     // continue chaining methods...
 ```
 
-#### Key
+### Key
 
 To access the privilege information of a given api key, call `key($apiKey)` method on the `ZoteroApi` instance.
 
@@ -275,7 +272,7 @@ $response = $api->key($apiKey)
 $keyPrivileges = $response->getBody();
 ```
 
-#### Groups
+### Groups
 
 To access all groups the current API key has access to, call `groups()` method just after `user($userId)` method.
 
