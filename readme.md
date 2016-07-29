@@ -32,7 +32,7 @@ A php wrapper for zotero web api.
   - [Key](#key)
   - [Groups](#groups)
   - [Sorting and pagination](#sorting-and-pagination)
-    - [Sorting](#sort)
+    - [Sorting](#sorting)
     - [Direction](#direction)
     - [Limit](#limit)
     - [Start](#start)
