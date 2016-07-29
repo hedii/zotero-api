@@ -342,8 +342,9 @@ class ZoteroApi
     }
 
     /**
-     * Build the path to get either the set of all items in the library, or a
-     * specific item in the library if a key is passed as a parameter.
+     * Build the path to get either the set of all items in the library, a
+     * specific item in the library if a key is passed as a parameter, or
+     * multiple items if an array of keys is passed as parameter.
      *
      * @param string|array|null $keys
      * @return $this
