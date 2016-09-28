@@ -693,6 +693,31 @@ class ZoteroApi
     }
 
     /**
+     * Build the path to get an object of all resources with item or collection
+     * keys as keys and their versions as values. It cannot be called on single
+     * collection or single item. The number of resources returned is not
+     * limited by the api: all items or collections versions are returned.
+     *
+     * @return $this
+     * @throws \Hedii\ZoteroApi\Exceptions\BadMethodCallException
+     */
+    public function versions()
+    {
+        $this->addQueryString($this->path, ['format' => 'versions']);
+
+        if (
+            ! $this->contains($this->path, 'items?format=versions') &&
+            ! $this->contains($this->path, 'collections?format=versions')
+        ) {
+            throw new BadMethodCallException(
+                'Method versions() can only be called on multi-object collection and multiple items'
+            );
+        }
+
+        return $this;
+    }
+
+    /**
      * Get the instance of the http client.
      *
      * @return \GuzzleHttp\Client
