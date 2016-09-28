@@ -44,6 +44,8 @@ A php wrapper for zotero web api.
     - [Response body](#response-body)
     - [Response json](#response-json)
     - [Response headers](#response-headers)
+    - [Response status code](#response-status-code)
+    - [Response reason phrase](#response-reason-phrase)
   - [Raw query](#raw-query)
 - [Examples](#examples)
 - [Testing](#testing)
@@ -454,6 +456,30 @@ $response = $api->user($userId)
     ->send();
     
 $headers = $response->getHeaders(); // array
+```
+
+#### Response status code
+
+To access the response status code, call the `getStatusCode()` method on the response.
+
+```php
+$response = $api->user($userId)
+    ->items()
+    ->send();
+    
+$statusCode = $response->getStatusCode(); // int
+```
+
+#### Response reason phrase
+
+To access the response reason phrase, call the `getReasonPhrase()` method on the response.
+
+```php
+$response = $api->user($userId)
+    ->items()
+    ->send();
+    
+$reasonPhrase = $response->getReasonPhrase(); // string
 ```
 
 ### Raw query
