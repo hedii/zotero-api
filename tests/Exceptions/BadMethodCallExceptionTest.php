@@ -171,4 +171,24 @@ class BadMethodCallExceptionTest extends TestCase
             ->collections()
             ->groups();
     }
+
+    public function testVersionsAfterItemWithKeyThrowsAnException()
+    {
+        $this->expectException(BadMethodCallException::class);
+
+        $this->api
+            ->user(12345)
+            ->items(12345)
+            ->versions();
+    }
+
+    public function testVersionsAfterCollectionWithKeyThrowsAnException()
+    {
+        $this->expectException(BadMethodCallException::class);
+
+        $this->api
+            ->user(12345)
+            ->collections(12345)
+            ->versions();
+    }
 }

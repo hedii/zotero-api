@@ -25,6 +25,7 @@ A php wrapper for zotero web api.
     - [Top level items in a collection](#top-level-items-in-a-collection)
     - [Collection tags](#collection-tags)
     - [Sub collections](#sub-collections)
+  - [Versions](#versions)
   - [Tags](#tags)
   - [Searches](#searches)
     - [Multiple searches](#multiple-searches)
@@ -214,6 +215,17 @@ To access sub collections within a specific collection, call `subCollection()` m
 $api->user($userId)
     ->collections($collectionKey)
     ->subCollections()
+    // continue chaining methods...
+```
+
+### Versions
+
+To get all resources (either collections or items) versions, call `versions()` method after `items()` or `collections()` method.
+
+```php
+$api->user($userId)
+    ->items()
+    ->versions()
     // continue chaining methods...
 ```
 
@@ -514,6 +526,13 @@ $response = $api->group(98765)
     ->send();
     
 $topItems = $response->getBody();
+
+// get an array of all items keys with their versions
+$response = $api->user(12345)
+    ->items()
+    ->versions();
+    
+$itemKeysWithVersions = $response->getBody();
 ```
 
 ## Testing

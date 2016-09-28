@@ -436,4 +436,18 @@ class ZoteroApiTest extends TestCase
 
         $this->assertInstanceOf(Client::class, $result);
     }
+
+    public function testVersions()
+    {
+        $result = $this->api
+            ->user(12345)
+            ->items()
+            ->versions();
+
+        $this->assertInstanceOf(ZoteroApi::class, $result);
+        $this->assertEquals(
+            'users/12345/items?format=versions',
+            $this->api->getPath()
+        );
+    }
 }
