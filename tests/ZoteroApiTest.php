@@ -93,6 +93,13 @@ class ZoteroApiTest extends TestCase
         $this->assertEquals('something', $this->api->getPath());
     }
 
+    public function testGetClient()
+    {
+        $result = $this->api->getClient();
+
+        $this->assertInstanceOf(Client::class, $result);
+    }
+
     public function testRaw()
     {
         $result = $this->api
@@ -428,13 +435,6 @@ class ZoteroApiTest extends TestCase
             'users/12345/items?sort=dateAdded&direction=asc&limit=20&start=3',
             $this->api->getPath()
         );
-    }
-
-    public function testGetClient()
-    {
-        $result = $this->api->getClient();
-
-        $this->assertInstanceOf(Client::class, $result);
     }
 
     public function testVersions()

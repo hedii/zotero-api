@@ -224,6 +224,36 @@ class ZoteroApi
     }
 
     /**
+     * Get the instance of the http client.
+     *
+     * @return \GuzzleHttp\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Gets the response status code.
+     *
+     * @return int
+     */
+    public function getStatusCode()
+    {
+        return $this->response->getStatusCode();
+    }
+
+    /**
+     * Gets the response reason phrase associated with the status code.
+     *
+     * @return string
+     */
+    public function getReasonPhrase()
+    {
+        return $this->response->getReasonPhrase();
+    }
+
+    /**
      * Set the path with a raw string.
      *
      * @param string $path
@@ -715,16 +745,6 @@ class ZoteroApi
         }
 
         return $this;
-    }
-
-    /**
-     * Get the instance of the http client.
-     *
-     * @return \GuzzleHttp\Client
-     */
-    public function getClient()
-    {
-        return $this->client;
     }
 
     /**
