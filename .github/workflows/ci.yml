@@ -22,6 +22,6 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
       - name: "Install Composer dependencies"
-        run: "composer ci:install"
+        run: "composer install"
       - name: "Run the tests"
         run: "composer tests"
