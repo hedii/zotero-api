@@ -24,4 +24,4 @@ jobs:
       - name: "Install Composer dependencies"
         run: "composer install"
       - name: "Run the tests"
-        run: "composer tests"
+        run: "composer test"
