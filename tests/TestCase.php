@@ -27,7 +27,7 @@ class TestCase extends PhpUnitTestCase
      */
     public $api;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->apiKey = getenv('ZOTERO_API_KEY');
         $this->userId = getenv('ZOTERO_USER_ID');
