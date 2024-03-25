@@ -15,6 +15,35 @@ class ZoteroApi
     const API_BASE_URL = 'https://api.zotero.org/';
 
     /**
+     * The possible include parameter values.
+     */
+    const INCLUDE_VALUES = [
+        'bib',
+        'citation',
+        'data'
+    ];
+
+    /**
+     * The possible export formats.
+     */
+    const EXPORT_FORMATS = [
+        'bibtex',
+        'biblatex',
+        'bookmarks',
+        'coins',
+        'csljson',
+        'csv',
+        'mods',
+        'refer',
+        'rdf_bibliontology',
+        'rdf_dc',
+        'rdf_zotero',
+        'ris',
+        'tei',
+        'wikipedia'
+    ];
+
+    /**
      * The api version.
      *
      * @var int
@@ -67,6 +96,11 @@ class ZoteroApi
      * @var string
      */
     private $format = 'json';
+
+    /**
+     * @var string
+     */
+    private $include = '';
 
     /**
      * @var Response
@@ -219,6 +253,41 @@ class ZoteroApi
     public function setFormat($format)
     {
         $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * Get the requested include parameter.
+     *
+     * @return string
+     */
+    public function getInclude()
+    {
+        return $this->include;
+    }
+
+    /**
+     * Set the requested include parameter.
+     *
+     * @param string $include
+     * @return $this
+     */
+    public function setInclude($include)
+    {
+        if (
+            !in_array($include, self::INCLUDE_VALUES) &&
+            !in_array($include, self::EXPORT_FORMATS)
+        ) {
+            throw new InvalidParameterException(
+                'Include parameter has to be one of ' .
+                implode(',', self::INCLUDE_VALUES) .
+                ' or a valid export format.'
+            );
+        }
+
+        $this->addQueryString($this->path, ['include' => $include]);
+        $this->include = $include;
 
         return $this;
     }

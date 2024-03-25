@@ -378,6 +378,20 @@ class ZoteroApiTest extends TestCase
         );
     }
 
+    public function testInclude()
+    {
+        $result = $this->api
+           ->user(12345)
+           ->items()
+           ->setInclude('tei');
+
+        $this->assertInstanceOf(ZoteroApi::class, $result);
+        $this->assertEquals(
+            'users/12345/items?include=tei',
+            $this->api->getPath()
+        );
+    }
+
     public function testDirection()
     {
         $result = $this->api
